@@ -5,7 +5,7 @@
 """
 Not very proud of the code reuse in this module -- @wguss
 """
-
+import json
 from typing import List
 
 import jinja2
@@ -206,7 +206,7 @@ class _DamageObservation(TranslationHandler):
         try:
             head = info['equipped_items']
             for key in self._keys:
-                head = head[key]
+                head = json.loads(head[key])
             return np.array(head[self.type_str])
         except KeyError:
             return np.array(self._default, dtype=self.space.dtype)
