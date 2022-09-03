@@ -137,7 +137,7 @@ class _TypeObservation(TranslationHandler):
         try:
             head = obs_dict['equipped_items']
             for key in self._keys:
-                head = head[key]
+                head = json.loads(head[key])
             item = head['type']
             return (self._other if item not in self._items else item)
         except KeyError:
