@@ -115,7 +115,9 @@ given here::
     def create_observables(self) -> List[Handler]:
         return [
             handlers.POVObservation(self.resolution),
-            handlers.FlatInventoryObservation(ALL_ITEMS)
+            handlers.FlatInventoryObservation(ALL_ITEMS),
+            handlers.ObservationFromLifeStats(),
+            handlers.EquippedItemObservation(ALL_ITEMS)
         ]
 
     def create_monitors(self) -> List[TranslationHandler]:
